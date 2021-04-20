@@ -9,7 +9,7 @@ public class Credit {
 
         //htpp://textfiles.com/100/capmidn.txt
 
-        File file = new File("C:/Brugere/ibo20/Skrivebord/captmidn.txt");
+        File file = new File("C:/Users/ibo20/Desktop/hey.txt");
         Scanner scan  = new Scanner(file);
 
         System.out.print(scan.nextLine());
