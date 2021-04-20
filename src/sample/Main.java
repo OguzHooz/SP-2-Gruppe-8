@@ -1,4 +1,5 @@
 package sample;
+import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +15,8 @@ public class Main extends Application {
         primaryStage.setTitle("Hello to the World ls");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
     }
-    //testingTest
 
 
     public static void main(String[] args) {
