@@ -38,10 +38,32 @@ public class Producer {
         System1.listOfPrograms.add(p);
 
         return p;
+    }
 
+    public void removeProgram(){
+        //We start by importing the scanner
+        Scanner myObj = new Scanner(System.in);
 
+        System.out.println("Du kan fjerne følgende programmer: ");
 
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            int programID = System1.listOfPrograms.get(i).getProgramID();
+            String programTitle = System1.listOfPrograms.get(i).getTitle();
+            String programReleaseD = System1.listOfPrograms.get(i).getReleaseDate();
 
+            System.out.println("ID: " + programID + "  " + programTitle + " (" + programReleaseD + ") ");
+        }
+
+        System.out.println("Indtast ID på det program du vil fjerne  ");
+        int idRemover = myObj.nextInt(); //This should be a textfield on the GUI
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            if (idRemover == System1.listOfPrograms.get(i).getProgramID()){
+                System1.listOfPrograms.remove(i);
+            }
+            else {
+                continue;
+            }
+        }
 
     }
 }
