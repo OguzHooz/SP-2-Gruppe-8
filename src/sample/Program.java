@@ -1,11 +1,14 @@
 package sample;
-
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.ArrayList;
 
 public class Program {
     private int programID;
     private String title;
     private String releaseDate;
+    //AtomicInteger count = new AtomicInteger(0);
+    private static final AtomicInteger programCounter = new AtomicInteger(0);
+
     ArrayList<Credit> listOfCreditsL;
 
     //Overloading this constructor so it's possible to create other objects
@@ -16,7 +19,9 @@ public class Program {
         this.releaseDate = releaseDate;
     }
 
-    public int generateProgramID(){ //DENNE METODE SKAL LAVES
+
+    public int generateProgramID() {
+        programID = programCounter.incrementAndGet();
         return programID;
     }
 

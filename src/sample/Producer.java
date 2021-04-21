@@ -9,12 +9,9 @@ public class Producer {
 
 
 
-    public static Program  addProgram(){
+    public Program  addProgram(){
         //We start by importing the scanner
         Scanner myObj = new Scanner(System.in);
-
-
-        int id = 0; //I need the method to generate ID here;
 
         //Start by asking for the movie title
         System.out.println("Indtast navnet på din film ");
@@ -23,13 +20,23 @@ public class Producer {
         //Ask for the release date
         System.out.println("Indtast navnet på din udgivelsesdato på din film ");
         String releaseD = myObj.nextLine(); //This should be a textfield on the GUI
+        Program test = new Program(0, null, null);
+
+
+        //Program ID
 
         //Here we create the new program
-        Program p = new Program (id, title, releaseD);
+        Program p = new Program (test.generateProgramID(), title, releaseD);
 
         System.out.println("Nu er filmen blevet tilføjet ");
 
+
+        System.out.println("Filmen " + title+ " har ID " + test.getProgramID());
+
+
+        //Here we add the newly created program to the array
         System1.listOfPrograms.add(p);
+
         return p;
 
 
