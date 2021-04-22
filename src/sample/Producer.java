@@ -7,6 +7,10 @@ import java.util.Scanner;
 
 public class Producer {
 
+    public void givePersonRole(){
+
+    }
+    
 
 
     public Program  addProgram(){
