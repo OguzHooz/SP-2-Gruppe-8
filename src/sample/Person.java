@@ -3,6 +3,11 @@ package sample;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Person {
+
+    public static AtomicInteger getCount() {
+        return count;
+    }
+
     private int personID;
     private String personName;
     private String personInformation;
@@ -27,5 +32,28 @@ public class Person {
     }
     public void generatePersonID() {
         personID = count.incrementAndGet();
+    }
+    public int getPersonID() {
+        return personID;
+    }
+
+    public void setPersonID(int personID) {
+        this.personID = personID;
+    }
+
+    public String getPersonName() {
+        return personName;
+    }
+
+    public void setPersonName(String personName) {
+        this.personName = personName;
+    }
+
+    public String getPersonInformation() {
+        return personInformation;
+    }
+
+    public void setPersonInformation(String personInformation) {
+        this.personInformation = personInformation;
     }
 }
