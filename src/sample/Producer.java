@@ -46,6 +46,7 @@ public class Producer {
 
         System.out.println("Du kan fjerne følgende programmer: ");
 
+        //Here we create a list with listOfPrograms, which contains a ProgramID, ProgramTitle and ProgramRelease
         for (int i = 0; i < System1.listOfPrograms.size(); i++){
             int programID = System1.listOfPrograms.get(i).getProgramID();
             String programTitle = System1.listOfPrograms.get(i).getTitle();
@@ -55,8 +56,9 @@ public class Producer {
         }
 
         System.out.println("Indtast ID på det program du vil fjerne  ");
-        int idRemover = myObj.nextInt(); //This should be a textfield on the GUI
-        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+        int idRemover = myObj.nextInt(); //This should be a textfield/button on the GUI
+
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){ //This forloop is for looking for the different programs ID's
             if (idRemover == System1.listOfPrograms.get(i).getProgramID()){
                 System1.listOfPrograms.remove(i);
             }
