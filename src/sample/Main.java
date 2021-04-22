@@ -1,4 +1,5 @@
 package sample;
+import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +15,19 @@ public class Main extends Application {
         primaryStage.setTitle("Hello to the World ls");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
+        Producer mandem = new Producer();
+        mandem.addProgram();
+        mandem.addProgram();
+        mandem.addProgram();
+        mandem.removeProgram();
+        mandem.addProgram();
+
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            System.out.println(System1.listOfPrograms.get(i).getTitle());
+
+        }
     }
-    //testingTest
 
 
     public static void main(String[] args) {
