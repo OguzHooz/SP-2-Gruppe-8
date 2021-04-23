@@ -15,7 +15,6 @@ public class Systemadministrator {
         System.out.print ("Enter person information: ");
         personInformation = input.nextLine();
 
-        //Person object should be added to an array maybe?
         Person person = new Person (personName, personInformation);
 
         System.out.println();
@@ -30,7 +29,7 @@ public class Systemadministrator {
 
         System.out.println("Du kan fjerne følgende personer: ");
 
-        //Here we create a list with listOfPrograms, which contains a ProgramID, ProgramTitle and ProgramRelease
+        //Here we create a list with listofPersons, which contains a personID, personName and personInformation
         for (int i = 0; i < System1.listOfPersons.size(); i++){
             int personID = System1.listOfPersons.get(i).getPersonID();
             String personName = System1.listOfPersons.get(i).getPersonName();
@@ -42,7 +41,7 @@ public class Systemadministrator {
         System.out.println("Indtast ID på den person du vil fjerne  ");
         int idRemover = myObj.nextInt(); //This should be a textfield/button on the GUI
 
-        for (int i = 0; i < System1.listOfPersons.size(); i++){ //This forloop is for looking for the different programs ID's
+        for (int i = 0; i < System1.listOfPersons.size(); i++){ //This forloop is for looking for the different person ID's
             if (idRemover == System1.listOfPersons.get(i).getPersonID()){
                 System.out.println(System1.listOfPersons.get(i).getPersonName() + " (Fjernet)");
                 System1.listOfPersons.remove(i);
