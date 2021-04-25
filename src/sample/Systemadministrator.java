@@ -51,7 +51,20 @@ public class Systemadministrator {
             }
         }
     }
+    public User addUser() {
+        Scanner myObj = new Scanner(System.in);
 
+        System.out.println("Indtast bruger ID: ");
+        String userID = myObj.nextLine(); //This should be a textfield on the GUI
+
+        User test = new User(0);
+
+        User u = new User(test.generateUserID());
+
+        System1.listOfUsers.add(u);
+
+        return u;
+    }
 
     public static void main(String[] args) {
         createPerson();
