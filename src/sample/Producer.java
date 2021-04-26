@@ -8,9 +8,38 @@ import java.util.Scanner;
 public class Producer {
 
     public void givePersonRole(){
+        Scanner myObj = new Scanner(System.in);
 
+        //For loop for showing the list of people
+        System.out.println("Liste over personer i systemet ");
+        for (int i = 0; i < System1.listOfPersons.size(); i++){
+            int personID = System1.listOfPersons.get(i).getPersonID();
+            String personName = System1.listOfPersons.get(i).getPersonName();
+            String personInformation = System1.listOfPersons.get(i).getPersonInformation();
+
+            System.out.println("ID: " + personID + "  " + personName + "  " + personInformation);
+        }
+
+
+        System.out.println("Indtast ID på den person der skal have rolle ");
+        int personID = myObj.nextInt(); //The person getting a role
+
+        for (int i = 0; i < System1.listOfPersons.size(); i++){
+            if (personID == System1.listOfPersons.get(i).getPersonID()){
+                Person gettingARole = System1.listOfPersons.get(i);
+
+                System.out.println("Indtast hvilken rolle de skal have ");
+                String role = myObj.next(); //The person getting a role
+
+                Credit.personWithRole.put(System1.listOfPersons.get(i), role);
+                System.out.println("ID: " + gettingARole.getPersonID() + "  " + gettingARole.getPersonName() + "  " + gettingARole.getPersonInformation() + " er har fået rollen " + role);
+
+            }
+            else {
+                continue;
+            }
+        }
     }
-    
 
 
     public Program  addProgram(){

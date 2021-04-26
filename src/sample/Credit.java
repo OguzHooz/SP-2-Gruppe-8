@@ -1,18 +1,12 @@
 package sample;
+import java.util.HashMap;
 
 public class Credit {
 
     private String personRole;
 
-
-
-
-
-
-
-
-
-
+    static HashMap<Person, String> personWithRole = new HashMap<Person, String>();
+    
 
     public String getPersonRole() {
         return personRole;
