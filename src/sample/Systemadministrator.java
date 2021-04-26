@@ -100,13 +100,4 @@ public class Systemadministrator {
         }
     }
 
-    public static void main(String[] args) {
-        createPerson();
-        createPerson();
-        Systemadministrator man = new Systemadministrator();
-        man.removePerson();
-        for (int i = 0; i < System1.listOfPersons.size(); i++){
-            System.out.println(System1.listOfPersons.get(i).getPersonName());
-        }
-    }
 }
