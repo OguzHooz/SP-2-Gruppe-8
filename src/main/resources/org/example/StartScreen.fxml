@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.PrimaryController">
+    <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+          prefWidth="600.0">
+        <children>
+            <ButtonBar layoutX="494.0" layoutY="14.0" prefHeight="34.0" prefWidth="50.0"/>
+            <ScrollBar layoutX="586.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="14.0"/>
+            <TextArea layoutX="43.0" layoutY="48.0" prefHeight="339.0" prefWidth="347.0"
+                      text="Credists credits credits                                                                                                  &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;Credists credits credits &#10;se mere scroll ned&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;"/>
+
+            <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="131.0">
+                <menus>
+                    <Menu mnemonicParsing="false" text="File">
+                        <items>
+                            <MenuItem mnemonicParsing="false" text="Close"/>
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                            <MenuItem mnemonicParsing="false" text="Delete"/>
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Help">
+                        <items>
+                            <MenuItem mnemonicParsing="false" text="About"/>
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <Button layoutX="519.0" layoutY="10.0" mnemonicParsing="false" text="Log ind"/>
+            <TextArea layoutX="427.0" layoutY="48.0" prefHeight="340.0" prefWidth="135.0"
+                      text="ADs eller reklame&#10;for andre eventuelle&#10;programmer her&#10;&#10;...&#10;...&#10;..&#10;...&#10;...&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;..&#10;"/>
+            <Button fx:id="SearchbarStart" layoutX="200.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0"
+                    prefWidth="244.0" text="Search bar"/>
+        </children>
+    </Pane>
+</VBox>
