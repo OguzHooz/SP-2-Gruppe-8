@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.PrimaryController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
     <AnchorPane prefHeight="400.0" prefWidth="600.0">
         <children>
-            <Button fx:id="TilbageCredit" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Tilbage"/>
-            <TextArea layoutX="69.0" layoutY="100.0" prefHeight="271.0" prefWidth="300.0"
-                      text="lydmand: John Lymand&#10;Kameramand: John Kameramand"/>
-            <TextField layoutX="69.0" layoutY="51.0" prefHeight="25.0" prefWidth="219.0"
-                       text="Credits tilhørende Agents Of Shield."/>
-            <TextField layoutX="139.0" layoutY="14.0" prefHeight="25.0" prefWidth="327.0" text="Search bar"/>
-            <TextArea layoutX="418.0" layoutY="76.0" prefHeight="298.0" prefWidth="142.0"
-                      text="Eventuelle reklamer for &#10;andre shows.&#10;"/>
-            <ScrollBar layoutX="586.0" layoutY="1.0" orientation="VERTICAL" prefHeight="399.0" prefWidth="14.0"/>
-            <Button fx:id="LogudCredit" layoutX="517.0" layoutY="14.0" mnemonicParsing="false" text="Log ud"/>
+            <Button fx:id="TilbageCredit" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#TilbageClicked" text="Tilbage" />
+            <TextArea layoutX="69.0" layoutY="100.0" prefHeight="271.0" prefWidth="300.0" text="lydmand: John Lymand&#10;Kameramand: John Kameramand" />
+            <TextField layoutX="69.0" layoutY="51.0" prefHeight="25.0" prefWidth="219.0" text="Credits tilhørende Agents Of Shield." />
+            <TextField layoutX="139.0" layoutY="14.0" prefHeight="25.0" prefWidth="327.0" text="Search bar" />
+            <TextArea layoutX="418.0" layoutY="76.0" prefHeight="298.0" prefWidth="142.0" text="Eventuelle reklamer for &#10;andre shows.&#10;" />
+            <ScrollBar layoutX="586.0" layoutY="1.0" orientation="VERTICAL" prefHeight="399.0" prefWidth="14.0" />
+            <Button fx:id="LogudCredit" layoutX="517.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#LogUdClicked" text="Log ud" />
         </children>
     </AnchorPane>
 </VBox>

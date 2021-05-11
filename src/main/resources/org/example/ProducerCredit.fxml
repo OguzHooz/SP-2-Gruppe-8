@@ -1,34 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.PrimaryController">
-
-    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Tilbage"/>
-    <AnchorPane layoutX="41.0" layoutY="71.0">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
+    <AnchorPane layoutX="332.0" layoutY="71.0" prefHeight="400.0" prefWidth="600.0">
         <children>
-            <TextArea prefHeight="240.0" prefWidth="241.0"/>
-            <Button fx:id="RedigercreditsPro" layoutX="28.0" layoutY="249.0" mnemonicParsing="false" prefHeight="25.0"
-                    prefWidth="181.0" text="Rediger credits"/>
-            <Button fx:id="FjernPro" layoutX="27.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0"
-                    prefWidth="181.0" text="Fjern"/>
-            <ScrollBar layoutX="227.0" orientation="VERTICAL" prefHeight="240.0" prefWidth="14.0"/>
+      
+          <Button layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#TilbageClicked" text="Tilbage" />
+            <TextArea layoutX="55.0" layoutY="98.0" prefHeight="240.0" prefWidth="181.0" text="a&#10;sd&#10;a&#10;da&#10;sd&#10;as&#10;da&#10;sd&#10;as&#10;d&#10;as&#10;d&#10;as&#10;da&#10;sd&#10;as&#10;da&#10;sd&#10;as" />
+            <Button fx:id="FortrydPro" layoutX="359.0" layoutY="337.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Fortryd" />
+            <TextArea layoutX="313.0" layoutY="98.0" prefHeight="240.0" prefWidth="241.0" text="sdasdasd&#10;asd&#10;as&#10;da&#10;sd&#10;as&#10;d&#10;as&#10;da&#10;sd&#10;a&#10;sd&#10;asd&#10;a&#10;sd&#10;a&#10;sd&#10;as&#10;da&#10;sd&#10;as&#10;d" />
+            <Button fx:id="RedigercreditsPro" layoutX="55.0" layoutY="337.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Rediger credits" />
+            <Button fx:id="FjernPro" layoutX="55.0" layoutY="362.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Fjern" />
+          <TextField fx:id="SearchbarPro" layoutX="222.0" layoutY="13.0" prefHeight="25.0" prefWidth="181.0" text="Search bar" />
+          <TextField layoutX="62.0" layoutY="63.0" prefHeight="25.0" prefWidth="181.0" text="Credits tilhørende dit program" />
+            <Button fx:id="TilføjcreditsPro" layoutX="359.0" layoutY="362.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Tilføj til credits" />
         </children>
     </AnchorPane>
-    <AnchorPane layoutX="332.0" layoutY="71.0">
-        <children>
-            <TextArea prefHeight="240.0" prefWidth="181.0"/>
-            <Button fx:id="FortrydPro" layoutX="17.0" layoutY="281.0" mnemonicParsing="false" prefHeight="25.0"
-                    prefWidth="150.0" text="Fortryd"/>
-            <Button fx:id="TilføjcreditsPro" layoutX="16.0" layoutY="249.0" mnemonicParsing="false" prefHeight="25.0"
-                    prefWidth="150.0" text="Tilføj til credits"/>
-            <ScrollBar layoutX="167.0" orientation="VERTICAL" prefHeight="240.0" prefWidth="14.0"/>
-        </children>
-    </AnchorPane>
-    <TextField fx:id="SearchbarPro" layoutX="332.0" layoutY="27.0" prefHeight="25.0" prefWidth="181.0"
-               text="Search bar"/>
-    <TextField layoutX="87.0" layoutY="40.0" prefHeight="25.0" prefWidth="181.0" text="Credits tilhørende dit program"/>
 </VBox>
