@@ -27,7 +27,7 @@ public class Producer {
         //enter persons role
         System.out.println("Indtast personens rolle ");
         String role = myString.nextLine(); //This should be a textfield on the GUI
-
+// this i where we asign the role
         for (int i =0; i<System1.listOfPersons.size();i++){
             if (personID == System1.listOfPersons.get(i).getPersonID()) {
                 Person personGettingARole = System1.listOfPersons.get(i);
