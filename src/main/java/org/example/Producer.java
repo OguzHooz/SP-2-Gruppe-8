@@ -5,6 +5,7 @@ import java.util.*;
 public class Producer {
 
     public void createCredit() {
+        String name = " ";
 //For loop for showing the list of people
         System.out.println("Liste over personer i systemet ");
         for (int i = 0; i < System1.listOfPersons.size(); i++) {
@@ -30,23 +31,31 @@ public class Producer {
 // this i where we asign the role
         for (int i =0; i<System1.listOfPersons.size();i++){
             if (personID == System1.listOfPersons.get(i).getPersonID()) {
-                Person personGettingARole = System1.listOfPersons.get(i);
+                Person person = System1.listOfPersons.get(i);
+                int p_ID = person.getPersonID();
+                String p_name = person.getPersonName();
 
-                Credit personCredit = new Credit(personGettingARole,role);
+                Credit personCredit = new Credit(person,role, p_ID, p_name);
                 System1.listOfCredit.add(personCredit);
+                name = p_name;
             }
             else {
-                continue;
+                System.out.println(" ");
             }
         }
-//For loop for showing the list of people
-        System.out.println("Liste over personer i systemet ");
+//For loop for showing the list of Credit
+        System.out.println("Liste over Credits i systemet ");
         for (int i = 0; i < System1.listOfCredit.size(); i++) {
 
             String personRole = System1.listOfCredit.get(i).getPersonRole();
-            System.out.println("ID: " + personID + "  " + "  " + personRole);
+            String personName = System1.listOfCredit.get(i).getpName();
+            int pID = System1.listOfCredit.get(i).getpID();
+
+            //Little text so it looks nice (and to confirm that a credit has been added to the system)
+            System.out.println( "----"+ "Person ID: " + pID + " Name:  " + personName +  " Role:   " + personRole + "----");
+            System.out.println("-------------------------------------");
         }
-        System.out.println(" Personen med ID " +  personID + " har fået rollen " + role);
+        System.out.println(" Personen  " +  name  + " har fået rollen " + role);
 
     }
 
