@@ -1,13 +1,57 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Producer {
 
-    public void givePersonRole(){
+    public void createCredit() {
+//For loop for showing the list of people
+        System.out.println("Liste over personer i systemet ");
+        for (int i = 0; i < System1.listOfPersons.size(); i++) {
+            int personID = System1.listOfPersons.get(i).getPersonID();
+            String personName = System1.listOfPersons.get(i).getPersonName();
+            String personInformation = System1.listOfPersons.get(i).getPersonInformation();
+
+            System.out.println("ID: " + personID + "  " + personName + "  " + personInformation);
+        }
+
+        //We start by importing the scanner
+        Scanner myObj = new Scanner(System.in);
+        Scanner myString = new Scanner(System.in);
+
+        //Start by asking for the persons ID
+        System.out.println("Indtast ID på person som du vil give role ");
+        int personID = myObj.nextInt(); //This should be a textfield on the GUI
+
+
+        //enter persons role
+        System.out.println("Indtast personens rolle ");
+        String role = myString.nextLine(); //This should be a textfield on the GUI
+
+        for (int i =0; i<System1.listOfPersons.size();i++){
+            if (personID == System1.listOfPersons.get(i).getPersonID()) {
+                Person personGettingARole = System1.listOfPersons.get(i);
+
+                Credit personCredit = new Credit(personGettingARole,role);
+                System1.listOfCredit.add(personCredit);
+            }
+            else {
+                continue;
+            }
+        }
+//For loop for showing the list of people
+        System.out.println("Liste over personer i systemet ");
+        for (int i = 0; i < System1.listOfCredit.size(); i++) {
+
+            String personRole = System1.listOfCredit.get(i).getPersonRole();
+            System.out.println("ID: " + personID + "  " + "  " + personRole);
+        }
+        System.out.println(" Personen med ID " +  personID + " har fået rollen " + role);
+
+    }
+
+
+   /* public void givePersonRole(){
         Scanner myObj = new Scanner(System.in);
 
         //For loop for showing the list of people
@@ -41,8 +85,10 @@ public class Producer {
         }
     }
 
+    */
 
-    public Program  addProgram(){
+
+    public Program addProgram() {
         //We start by importing the scanner
         Scanner myObj = new Scanner(System.in);
 
@@ -59,12 +105,12 @@ public class Producer {
         //Program ID
 
         //Here we create the new program
-        Program p = new Program (test.generateProgramID(), title, releaseD);
+        Program p = new Program(test.generateProgramID(), title, releaseD);
 
         System.out.println("Nu er filmen blevet tilføjet ");
 
 
-        System.out.println("Filmen " + title+ " har ID " + test.getProgramID());
+        System.out.println("Filmen " + title + " har ID " + test.getProgramID());
 
 
         //Here we add the newly created program to the array
@@ -73,14 +119,14 @@ public class Producer {
         return p;
     }
 
-    public void removeProgram(){
+    public void removeProgram() {
         //We start by importing the scanner
         Scanner myObj = new Scanner(System.in);
 
         System.out.println("Du kan fjerne følgende programmer: ");
 
         //Here we create a list with listOfPrograms, which contains a ProgramID, ProgramTitle and ProgramRelease
-        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+        for (int i = 0; i < System1.listOfPrograms.size(); i++) {
             int programID = System1.listOfPrograms.get(i).getProgramID();
             String programTitle = System1.listOfPrograms.get(i).getTitle();
             String programReleaseD = System1.listOfPrograms.get(i).getReleaseDate();
@@ -91,11 +137,10 @@ public class Producer {
         System.out.println("Indtast ID på det program du vil fjerne  ");
         int idRemover = myObj.nextInt(); //This should be a textfield/button on the GUI
 
-        for (int i = 0; i < System1.listOfPrograms.size(); i++){ //This forloop is for looking for the different programs ID's
-            if (idRemover == System1.listOfPrograms.get(i).getProgramID()){
+        for (int i = 0; i < System1.listOfPrograms.size(); i++) { //This forloop is for looking for the different programs ID's
+            if (idRemover == System1.listOfPrograms.get(i).getProgramID()) {
                 System1.listOfPrograms.remove(i);
-            }
-            else {
+            } else {
                 continue;
             }
         }

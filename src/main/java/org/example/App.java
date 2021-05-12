@@ -20,6 +20,13 @@ public class App extends Application {
         scene = new Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
         stage.show();
+
+
+        Systemadministrator.createPerson();
+        Systemadministrator.createPerson();
+        Systemadministrator.createPerson();
+        Producer jens = new Producer();
+        jens.createCredit();
     }
 
     static void setRoot(String fxml) throws IOException {

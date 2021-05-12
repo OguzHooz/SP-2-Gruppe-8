@@ -3,11 +3,6 @@ import java.util.HashMap;
 
 public class Credit {
 
-    private String personRole;
-
-    static HashMap<Person, String> personWithRole = new HashMap<Person, String>();
-
-
     public String getPersonRole() {
         return personRole;
     }
@@ -16,6 +11,11 @@ public class Credit {
         this.personRole = personRole;
     }
 
+    private String personRole;
 
+    public Credit(Person person, String personRole) {
+        this.personRole = personRole;
+
+    }
 
 }

@@ -66,7 +66,7 @@ public class Systemadministrator {
         return u;
     }
 
-    public void givePersonRole(){
+    /* public void givePersonRole(){
         Scanner myObj = new Scanner(System.in);
 
         //For loop for showing the list of people
@@ -100,4 +100,6 @@ public class Systemadministrator {
         }
     }
 
+
+     */
 }
