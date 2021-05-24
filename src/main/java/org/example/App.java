@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import java.sql.*;
 
 import java.io.IOException;
 
@@ -31,15 +32,35 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    static Connection connection = null;
+
     public static void main(String[] args) {
         launch();
 
-        Systemadministrator.createPerson();
-        Systemadministrator.createPerson();
-        Systemadministrator.createPerson();
-        Producer jens = new Producer();
-        jens.createCredit();
-        jens.createCredit();
+        //Create database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        //Inserting a user into the database:
+       /* try {
+            String a = "Kameramand";
+            int b = 10;
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO credit (role, personid_fk) VALUES (?,?)");
+            insertStatement.setString(1, a);
+            insertStatement.setInt(2,b);
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }*/
+        System.out.println("HEY");
 
 
     }
