@@ -35,8 +35,6 @@ public class App extends Application {
     static Connection connection = null;
 
     public static void main(String[] args) {
-        launch();
-
         //Create database
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -46,6 +44,15 @@ public class App extends Application {
                     "hudmanbat3103");
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        launch();
+        System1 sys = new System1();
+        sys.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
+
+        //Test for checking if the updated listOfProgram array works
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            Program proggy = System1.listOfPrograms.get(i);
+            System.out.println(proggy.getTitle());
         }
 
 
