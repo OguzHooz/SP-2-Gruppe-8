@@ -1,8 +1,12 @@
 package org.example;
 
+import java.sql.*;
 import java.util.*;
 
 public class Producer {
+
+    static Connection connection = null;
+
 
     public void createCredit() {
         String name = " ";
@@ -118,30 +122,80 @@ public class Producer {
 
         System.out.println("Nu er filmen blevet tilføjet ");
 
-
         System.out.println("Filmen " + title + " har ID " + test.getProgramID());
-
 
         //Here we add the newly created program to the array
         System1.listOfPrograms.add(p);
 
+        //Adding the program to the database
+
+        //Create database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO program (title, release_date) VALUES (?,?)");
+            insertStatement.setString(1, title);
+            insertStatement.setString(2, releaseD);
+            insertStatement.execute();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         return p;
     }
 
+
+    Statement statement = null;
+
     public void removeProgram() {
+
+        //Connection database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM program");
+
+            while (resultSet.next() ){
+                int programID = resultSet.getInt("program_id");
+                String programTitle = resultSet.getString("title");
+                String programReleaseDate = resultSet.getString("release_date");
+
+                System.out.println("Movie ID: " + programID + ". Title: " + programTitle + ". Release date: " + programReleaseDate);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
         //We start by importing the scanner
         Scanner myObj = new Scanner(System.in);
 
         System.out.println("Du kan fjerne følgende programmer: ");
 
-        //Here we create a list with listOfPrograms, which contains a ProgramID, ProgramTitle and ProgramRelease
-        for (int i = 0; i < System1.listOfPrograms.size(); i++) {
-            int programID = System1.listOfPrograms.get(i).getProgramID();
-            String programTitle = System1.listOfPrograms.get(i).getTitle();
-            String programReleaseD = System1.listOfPrograms.get(i).getReleaseDate();
-
-            System.out.println("ID: " + programID + "  " + programTitle + " (" + programReleaseD + ") ");
-        }
 
         System.out.println("Indtast ID på det program du vil fjerne  ");
         int idRemover = myObj.nextInt(); //This should be a textfield/button on the GUI
@@ -153,6 +207,9 @@ public class Producer {
                 continue;
             }
         }
+
+
+
 
     }
 }
