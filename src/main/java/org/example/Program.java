@@ -10,7 +10,7 @@ public class Program {
     //AtomicInteger count = new AtomicInteger(0);
     private static final AtomicInteger programCounter = new AtomicInteger(0);
 
-    ArrayList<Credit> listOfCreditsL;
+    ArrayList<Credit> creditsInProgram = new ArrayList<Credit>();
 
     //Overloading this constructor so it's possible to create other objects
     public Program (int programID, String title, String releaseDate){
