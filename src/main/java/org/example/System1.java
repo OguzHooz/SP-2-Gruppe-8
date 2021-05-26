@@ -18,7 +18,7 @@ public class System1 {
 
 
     public void loadProgramsFromDatabase(){
-        //Create database
+        //Connect to database
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
             connection = DriverManager.getConnection(
@@ -41,6 +41,40 @@ public class System1 {
 
                 Program program = new Program(programID,programTitle,programReleaseDate);
                 listOfPrograms.add(program);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    public void loadPersonFromDatabase(){
+        //Connect to database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Here we add the programs in the database to the ListOfPrograms list:
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM persondata");
+
+            while (resultSet.next() ){
+                int personID = resultSet.getInt("person_id");
+                String personName = resultSet.getString("person_name");
+                String personInformation = resultSet.getString("information");
+
+                Person person = new Person(personID, personName,personInformation);
+                listOfPersons.add(person);
             }
 
         } catch (SQLException e) {

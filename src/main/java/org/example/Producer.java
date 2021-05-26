@@ -9,6 +9,9 @@ public class Producer {
 
 
     public void createCredit() {
+
+
+
         String name = " ";
 //For loop for showing the list of people
         System.out.println("Liste over personer i systemet ");

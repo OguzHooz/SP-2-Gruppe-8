@@ -48,11 +48,12 @@ public class App extends Application {
         launch();
         System1 sys = new System1();
         sys.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
+        sys.loadPersonFromDatabase(); //This method creates objects retrieved from the database
 
-        //Test for checking if the updated listOfProgram array works
-        for (int i = 0; i < System1.listOfPrograms.size(); i++){
-            Program proggy = System1.listOfPrograms.get(i);
-            System.out.println(proggy.getTitle());
+        //Test for checking if the updated listOfPerson array works
+        for (int i = 0; i < System1.listOfPersons.size(); i++){
+            Person person = System1.listOfPersons.get(i);
+            System.out.println(person.getPersonName() + " ID is: " + person.getPersonID());
         }
 
 
@@ -67,7 +68,7 @@ public class App extends Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }*/
-        System.out.println("HEY");
+        System.out.println("PROGRAMMET VIRKER");
 
 
     }

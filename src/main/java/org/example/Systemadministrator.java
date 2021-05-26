@@ -15,7 +15,7 @@ public class Systemadministrator {
         System.out.print ("Enter person information: ");
         personInformation = input.nextLine();
 
-        Person person = new Person (personName, personInformation);
+        Person person = new Person (2 ,personName, personInformation);
 
         System.out.println();
         System.out.print ("The new person has successfully been added." + "\n");

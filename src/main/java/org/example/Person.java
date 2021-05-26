@@ -19,16 +19,17 @@ public class Person {
         personName = " ";
         personInformation = " ";
     }
-    public Person (String personName, String personInformation) {
+    public Person (int personID, String personName, String personInformation) {
         // Initialize instance variables
-        generatePersonID();
+        //generatePersonID();  //GeneratePersonID isnt used anymore
+        this.personID = personID;
         this.personName = personName;
         this.personInformation = personInformation;
 
         //to test that the output is correct
-        System.out.println("Name: " + personName);
+/*        System.out.println("Name: " + personName);
         System.out.println("Information: " + personInformation);
-        System.out.println("ID: " + personID);
+        System.out.println("ID: " + personID);*/
     }
     public void generatePersonID() {
         personID = count.incrementAndGet();
