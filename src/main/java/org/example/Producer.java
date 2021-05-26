@@ -163,7 +163,7 @@ public class Producer {
 
     Statement statement = null;
 
-    public void removeProgram() {
+    public boolean removeProgram() {
 
         //Connection database
         try {
@@ -175,23 +175,6 @@ public class Producer {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        try {
-            statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM program");
-
-            while (resultSet.next() ){
-                int programID = resultSet.getInt("program_id");
-                String programTitle = resultSet.getString("title");
-                String programReleaseDate = resultSet.getString("release_date");
-
-                System.out.println("Movie ID: " + programID + ". Title: " + programTitle + ". Release date: " + programReleaseDate);
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
 
 
         //We start by importing the scanner
@@ -210,6 +193,19 @@ public class Producer {
                 continue;
             }
         }
+
+
+        try {
+
+            PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM  program WHERE program_id = ?");
+            deleteStatement.setInt(1,idRemover);
+            return deleteStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+
 
 
 
