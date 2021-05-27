@@ -16,6 +16,10 @@ public class System1 {
     Statement statement = null;
 
 
+    public void loadCreditsFromDatabase(){
+        //GETTING IT DONE
+    }
+
 
     public void loadProgramsFromDatabase(){
         //Connect to database

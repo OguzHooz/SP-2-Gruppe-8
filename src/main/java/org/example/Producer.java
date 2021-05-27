@@ -9,11 +9,19 @@ public class Producer {
 
 
     public void createCredit() {
-
-
+        //Connect to database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         String name = " ";
-//For loop for showing the list of people
+        //For loop for showing the list of people
         System.out.println("Liste over personer i systemet ");
         for (int i = 0; i < System1.listOfPersons.size(); i++) {
             int personID = System1.listOfPersons.get(i).getPersonID();
@@ -35,7 +43,7 @@ public class Producer {
         //enter persons role
         System.out.println("Indtast personens rolle ");
         String role = myString.nextLine(); //This should be a textfield on the GUI
-// this i where we asign the role
+        // this i where we asign the role
         for (int i =0; i<System1.listOfPersons.size();i++){
             if (personID == System1.listOfPersons.get(i).getPersonID()) {
                 Person person = System1.listOfPersons.get(i);
@@ -50,6 +58,15 @@ public class Producer {
                 System.out.println(" ");
             }
         }
+
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO credit (role, personid_fk) VALUES (?, ?)");
+            insertStatement.setString(1, role);
+            insertStatement.setInt(2, personID);
+            insertStatement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 //For loop for showing the list of Credit
         System.out.println("Liste over Credits i systemet ");
         for (int i = 0; i < System1.listOfCredit.size(); i++) {
@@ -60,48 +77,83 @@ public class Producer {
 
             //Little text so it looks nice (and to confirm that a credit has been added to the system)
             System.out.println( "----"+ "Person ID: " + pID + " Name:  " + personName +  " Role:   " + personRole + "----");
-            System.out.println("-------------------------------------");
         }
         System.out.println(" Personen  " +  name  + " har fået rollen " + role);
 
     }
 
 
-   /* public void givePersonRole(){
-        Scanner myObj = new Scanner(System.in);
-
-        //For loop for showing the list of people
-        System.out.println("Liste over personer i systemet ");
-        for (int i = 0; i < System1.listOfPersons.size(); i++){
-            int personID = System1.listOfPersons.get(i).getPersonID();
-            String personName = System1.listOfPersons.get(i).getPersonName();
-            String personInformation = System1.listOfPersons.get(i).getPersonInformation();
-
-            System.out.println("ID: " + personID + "  " + personName + "  " + personInformation);
+    public void addCreditToProgram(){
+        //Connect to database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
 
-        System.out.println("Indtast ID på den person der skal have rolle ");
-        int personID = myObj.nextInt(); //The person getting a role
 
-        for (int i = 0; i < System1.listOfPersons.size(); i++){
-            if (personID == System1.listOfPersons.get(i).getPersonID()){
-                Person gettingARole = System1.listOfPersons.get(i);
+        //We ask for the ProgramID and the CreditID
+        Scanner programIDScan = new Scanner(System.in);
+        Scanner creditIDScan = new Scanner(System.in);
 
-                System.out.println("Indtast hvilken rolle de skal have ");
-                String role = myObj.next(); //The person getting a role
+        System.out.println("Please the program id that you wish to add credits to ");
+        int programID = programIDScan.nextInt(); //Input the id nr
 
-                Credit.personWithRole.put(System1.listOfPersons.get(i), role);
-                System.out.println("ID: " + gettingARole.getPersonID() + "  " + gettingARole.getPersonName() + "  " + gettingARole.getPersonInformation() + " er har fået rollen " + role);
+        System.out.println("Please the credit id that you wish to add credits to ");
+        int creditID = creditIDScan.nextInt(); //The credit ID
 
-            }
-            else {
-                continue;
-            }
+
+        //Here we add the Credit to the chosen Program into the database
+
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO credit_to_program ( program_id_fk, credit_id__fk) VALUES (?,?)");
+            insertStatement.setInt(1, programID);
+            insertStatement.setInt(2, creditID);
+            insertStatement.execute();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
     }
 
-    */
+    public boolean removeCreditFromProgram(){
+        //Connect to database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //We start by importing our scanner so we can get the input of which credit should be removed
+
+        Scanner creditRemove = new Scanner(System.in);
+
+        System.out.println("Indtast det credit ID du vil fjerne");
+        int creditID = creditRemove.nextInt(); //Here we get the ID that will get removed
+
+        try {
+            PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM credit_to_program WHERE credit_id__fk = ?");
+            deleteStatement.setInt(1,creditID);
+            return deleteStatement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
 
 
     public Program addProgram() {

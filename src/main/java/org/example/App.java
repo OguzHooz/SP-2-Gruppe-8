@@ -48,23 +48,32 @@ public class App extends Application {
         launch();
         System1 sys = new System1();
         Producer producer = new Producer();
+        Systemadministrator systemadministrator = new Systemadministrator();
+
+
         sys.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
         sys.loadPersonFromDatabase(); //This method creates objects retrieved from the database
 
-        //Test for checking if the updated listOfPerson array works
-        for (int i = 0; i < System1.listOfPersons.size(); i++){
-            Person person = System1.listOfPersons.get(i);
-            System.out.println(person.getPersonName() + " ID is: " + person.getPersonID());
-        }
 
         //Test for checking if the programs are there
-
         System.out.println("List of Programs: ");
         for (int i = 0; i < System1.listOfPrograms.size(); i++){
             Program program = System1.listOfPrograms.get(i);
             System.out.println("Title: " +program.getTitle() + "  ID " + program.getProgramID());
         }
-        producer.removeProgram();
+
+        //Test for checking if the Person are there
+        System.out.println("---------------");
+        System.out.println("List of Person: ");
+        for (int i = 0; i < System1.listOfPersons.size(); i++){
+            Person person = System1.listOfPersons.get(i);
+            System.out.println("Name: " +person.getPersonName() + "  ID " + person.getPersonID());
+        }
+        System.out.println(" -------------");
+
+
+
+
 
 
 
