@@ -1,5 +1,8 @@
 package org.example;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Person {
@@ -31,6 +34,8 @@ public class Person {
         System.out.println("Information: " + personInformation);
         System.out.println("ID: " + personID);*/
     }
+    //Create database
+
     public void generatePersonID() {
         personID = count.incrementAndGet();
     }

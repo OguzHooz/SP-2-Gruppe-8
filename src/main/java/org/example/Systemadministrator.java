@@ -1,10 +1,14 @@
 package org.example;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Systemadministrator {
 
-    public static void createPerson() {
+    public static Person createPerson() {
         Scanner input = new Scanner(System.in);
         String personName;
         String personInformation;
@@ -21,7 +25,36 @@ public class Systemadministrator {
         System.out.print ("The new person has successfully been added." + "\n");
 
         System1.listOfPersons.add(person);
+
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "12345");
+        } catch (
+                SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
+        try {
+            Connection connection = null;
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO person (personName, personInformation) VALUES (?,?)");
+            insertStatement.setString(1, personName);
+            insertStatement.setString(2, personInformation);
+            insertStatement.execute();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return person;
     }
+
 
     public void removePerson() {
         //We start by importing the scanner
