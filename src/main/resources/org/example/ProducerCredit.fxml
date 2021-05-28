@@ -14,8 +14,9 @@
             <Button fx:id="RedigercreditsPro" layoutX="55.0" layoutY="337.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Rediger credits" />
             <Button fx:id="FjernPro" layoutX="55.0" layoutY="362.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Fjern" />
           <TextField fx:id="SearchbarPro" layoutX="222.0" layoutY="13.0" prefHeight="25.0" prefWidth="181.0" text="Search bar" />
-          <TextField layoutX="62.0" layoutY="63.0" prefHeight="25.0" prefWidth="181.0" text="Credits tilhørende dit program" />
+          <TextField layoutX="55.0" layoutY="63.0" prefHeight="25.0" prefWidth="181.0" text="Credits tilhørende dit program" />
             <Button fx:id="TilføjcreditsPro" layoutX="359.0" layoutY="362.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="Tilføj til credits" />
+         <Button layoutX="441.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Send to verification" />
         </children>
     </AnchorPane>
 </VBox>
