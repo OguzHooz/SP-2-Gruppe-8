@@ -90,6 +90,9 @@ public class System1 {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM program");
 
+            String inputEmail = "";
+            String inputPassword = "";
+
             while (resultSet.next() ){
                 int programID = resultSet.getInt("program_id");
                 String programTitle = resultSet.getString("title");
@@ -107,7 +110,7 @@ public class System1 {
     }
 
 
-    public void loadPersonFromDatabase(){
+    public void logInUdkast(){
         //Connect to database
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -122,21 +125,30 @@ public class System1 {
         //Here we add the programs in the database to the ListOfPrograms list:
         try {
             statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM persondata");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM user_data");
+
+            String inputEmail = " "; //DET ENE TEKSTFELT FRA GUI
+            String inputPassword = " "; //DET ANDET TEKSTFELT FRA GUI
 
             while (resultSet.next() ){
-                int personID = resultSet.getInt("person_id");
-                String personName = resultSet.getString("person_name");
-                String personInformation = resultSet.getString("information");
+                String user_email = resultSet.getString("user_email");
+                String password = resultSet.getString("user_password");
 
-                Person person = new Person(personID, personName,personInformation);
-                listOfPersons.add(person);
+                if (inputEmail == user_email && inputPassword == password){
+                    //LOG IND
+                }
+                else {
+                    continue;
+                }
+
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-
     }
+
+
+
 }
