@@ -13,7 +13,7 @@
                 <font>
                     <Font size="18.0" />
                 </font></TextField>
-            <Button fx:id="LogindLogin" layoutX="259.0" layoutY="267.0" mnemonicParsing="false" onMouseClicked="#loginClicked" text="Log ind" />
+            <Button fx:id="LogindLogin" layoutX="259.0" layoutY="267.0" mnemonicParsing="false" onMouseClicked="#logInPressed" text="Log ind" />
             <Hyperlink fx:id="ForgotpassLogin" layoutX="197.0" layoutY="320.0" onMouseClicked="#ForgotPasswordClicked" prefHeight="23.0" prefWidth="210.0" text="Forgot password?" />
             <TextField fx:id="userTextfield" layoutX="226.0" layoutY="182.0" />
             <Label layoutX="159.0" layoutY="186.0" text="Username" />
