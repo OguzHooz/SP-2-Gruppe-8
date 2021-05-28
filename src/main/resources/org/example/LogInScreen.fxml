@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="org.example.PrimaryController">
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
     <AnchorPane prefHeight="400.0" prefWidth="600.0">
         <children>
-            <Button fx:id="TilbageLogin" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Tilbage"/>
-            <PasswordField fx:id="PasswordLogin" layoutX="226.0" layoutY="222.0" text="Password"/>
-            <TextField layoutX="155.0" layoutY="39.0" prefHeight="81.0" prefWidth="259.0"
-                       text="Log ind med TV2's Single Sign On System"/>
-            <Button fx:id="LogindLogin" layoutX="259.0" layoutY="267.0" mnemonicParsing="false" text="Log ind"/>
-            <Label layoutX="184.0" layoutY="192.0" prefHeight="17.0" prefWidth="233.0"
-                   text="Brugernavn til log ind skal laves"/>
-            <Hyperlink fx:id="ForgotpassLogin" layoutX="197.0" layoutY="320.0" prefHeight="23.0" prefWidth="210.0"
-                       text="Forgot password?"/>
+            <Button fx:id="TilbageLogin" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#TilbageClicked" text="Tilbage" />
+            <PasswordField fx:id="PasswordLogin" layoutX="226.0" layoutY="222.0" />
+            <TextField layoutX="110.0" layoutY="58.0" prefHeight="81.0" prefWidth="355.0" text="Log ind med TV2's Single Sign On System">
+            <font>
+               <Font size="18.0" />
+            </font></TextField>
+            <Button fx:id="LogindLogin" layoutX="259.0" layoutY="267.0" mnemonicParsing="false" onMouseClicked="#loginClicked" text="Log ind" />
+            <Hyperlink fx:id="ForgotpassLogin" layoutX="197.0" layoutY="320.0" onMouseClicked="#ForgotPasswordClicked" prefHeight="23.0" prefWidth="210.0" text="Forgot password?" />
+         <TextField fx:id="userTextfield" layoutX="226.0" layoutY="182.0" />
+         <Label layoutX="159.0" layoutY="186.0" text="Username" />
+         <Label layoutX="161.0" layoutY="226.0" text="Password" />
         </children>
     </AnchorPane>
 </VBox>
