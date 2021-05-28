@@ -73,6 +73,17 @@ public class App extends Application {
 
 
 
+        //Test for checking if the Credit are there
+        System.out.println("----------------");
+        System.out.println("List of Credit:  ");
+        for (int i = 0; i < System1.listOfCredit.size(); i++){
+            Credit credit = System1.listOfCredit.get(i);
+            System.out.println("Name: " +credit.getpName() + "  ID " + credit.getpID() + credit.getPersonRole());
+        }
+        System.out.println(" -------------");
+
+
+
 
 
 

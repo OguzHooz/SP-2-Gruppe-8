@@ -17,7 +17,59 @@ public class System1 {
 
 
     public void loadCreditsFromDatabase(){
-        //GETTING IT DONE
+
+        //Connect to database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Here we add the programs in the database to the ListOfPrograms list:
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM credit");
+            ResultSet rst = statement.executeQuery("SELECT * FROM persondata");
+
+            while (resultSet.next() ){
+                //Here we gather information for the credit objects
+                int creditID = resultSet.getInt("creditid");
+                String role = resultSet.getString("role");
+                int personID = resultSet.getInt("personid_fk");
+
+
+                //To create a credit object, we need a person object, so here we get the person information
+                for (int i = 0; i < System1.listOfPersons.size(); i++){
+                    Person person = System1.listOfPersons.get(i);
+
+                    if (personID == person.getPersonID()){
+                        Credit c_credit = new Credit(person, role, person.getPersonID(), person.getPersonName());
+                        System1.listOfCredit.add(c_credit);
+                    }
+                    else {
+                        continue;
+                    }
+                }
+
+/*                //To create a credit object, we need a person object, so here we get the person information
+                for (int i = 0; i < System1.listOfPersons.size(); i++){
+                    Person person = System1.listOfPersons.get(i);
+                    int p_id = person.getPersonID();
+                    String p_name = person.getPersonName();
+                    String p_information = person.getPersonInformation();
+
+                }*/
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

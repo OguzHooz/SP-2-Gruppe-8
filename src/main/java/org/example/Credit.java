@@ -30,4 +30,8 @@ public class Credit {
         this.pName = person.getPersonName();
     }
 
+    public Credit(String personRole, int pID, String pName){
+
+    }
+
 }
