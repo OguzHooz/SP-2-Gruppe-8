@@ -52,7 +52,7 @@ public class App extends Application {
 
 
         sys.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
-
+        
 
 
         //Test for checking if the programs are there

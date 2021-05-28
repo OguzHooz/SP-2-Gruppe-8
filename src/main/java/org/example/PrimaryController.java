@@ -82,16 +82,17 @@ public class PrimaryController {
                     String user_email = resultSet.getString("user_email");
                     String password = resultSet.getString("user_password");
 
-                    if (inputEmail != "user" && inputPassword != "password123") {
-                        System.out.println("It didnt work");
-                        }
-
-                    else {
+                    if (inputEmail.contains(user_email)  && inputPassword.contains(password)) {
                         System.out.println("It did work ");
                         App.setRoot("ProducerCredit");
                         System.out.println("This is  the right Login");
-                    }
 
+                        }
+
+                    else {
+                        System.out.println("It didnt work");
+
+                    }
                 }
 
             } catch (SQLException e) {
