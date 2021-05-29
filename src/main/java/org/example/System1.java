@@ -13,7 +13,44 @@ public class System1 {
     static ArrayList<Program> listOfPrograms = new ArrayList<Program>();
     static ArrayList<Credit> listOfCredit = new ArrayList<Credit>();
     static Connection connection = null;
+    ArrayList<Credit> tempArraylist = new ArrayList<Credit>(); //it gets used in the load credits method
     Statement statement = null;
+
+
+
+
+    public void loadPersonFromDatabase(){
+        //Connect to database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Here we add the programs in the database to the ListOfPrograms list:
+        try {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM persondata");
+
+            while (resultSet.next() ){
+                int personID = resultSet.getInt("person_id");
+                String personName = resultSet.getString("person_name");
+                String personInformation = resultSet.getString("information");
+
+                Person person = new Person(personID, personName,personInformation);
+                listOfPersons.add(person);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
 
     public void loadCreditsFromDatabase(){
@@ -29,11 +66,12 @@ public class System1 {
             e.printStackTrace();
         }
 
+
         //Here we add the programs in the database to the ListOfPrograms list:
         try {
-            statement = connection.createStatement();
+
             ResultSet resultSet = statement.executeQuery("SELECT * FROM credit");
-            ResultSet rst = statement.executeQuery("SELECT * FROM persondata");
+            statement = connection.createStatement();
 
             while (resultSet.next() ){
                 //Here we gather information for the credit objects
@@ -42,29 +80,41 @@ public class System1 {
                 int personID = resultSet.getInt("personid_fk");
 
 
-                //To create a credit object, we need a person object, so here we get the person information
-                for (int i = 0; i < System1.listOfPersons.size(); i++){
-                    Person person = System1.listOfPersons.get(i);
+                Credit credit = new Credit(role, personID, creditID);
 
-                    if (personID == person.getPersonID()){
-                        Credit c_credit = new Credit(person, role, person.getPersonID(), person.getPersonName());
-                        System1.listOfCredit.add(c_credit);
+                tempArraylist.add(credit);
+            }
+
+
+
+
+            for (int j = 0; j < tempArraylist.size(); j++){
+                Credit credit = tempArraylist.get(j);
+                int creditID = credit.getCreditID();
+                int personID = credit.getpID();
+                String roleID = credit.getPersonRole();
+
+                for (int i = 0; i < System1.listOfPersons.size(); i++ ){
+
+                    Person tempPerson = System1.listOfPersons.get(i);
+                    String p_Role = credit.getPersonRole();
+                    int p_ID = tempPerson.getPersonID();
+                    String p_name =  tempPerson.getPersonName();
+
+
+                    if (personID == p_ID && p_Role == roleID){
+                        Credit c = new Credit(tempPerson, p_Role, p_ID, p_name);
+                        c.setCreditID(creditID);
+                        System1.listOfCredit.add(c);
                     }
-                    else {
-                        continue;
+
+                    else{
+                        System.out.println("Loading Credits ");
                     }
                 }
 
-/*                //To create a credit object, we need a person object, so here we get the person information
-                for (int i = 0; i < System1.listOfPersons.size(); i++){
-                    Person person = System1.listOfPersons.get(i);
-                    int p_id = person.getPersonID();
-                    String p_name = person.getPersonName();
-                    String p_information = person.getPersonInformation();
-
-                }*/
-
             }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -90,8 +140,6 @@ public class System1 {
             statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM program");
 
-            String inputEmail = "";
-            String inputPassword = "";
 
             while (resultSet.next() ){
                 int programID = resultSet.getInt("program_id");

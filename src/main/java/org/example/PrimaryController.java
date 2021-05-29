@@ -83,14 +83,11 @@ public class PrimaryController {
                     String password = resultSet.getString("user_password");
 
                     if (inputEmail.contains(user_email)  && inputPassword.contains(password)) {
-                        System.out.println("It did work ");
                         App.setRoot("ProducerCredit");
-                        System.out.println("This is  the right Login");
 
                         }
-
                     else {
-                        System.out.println("It didnt work");
+                        System.out.println("Logging In");
 
                     }
                 }

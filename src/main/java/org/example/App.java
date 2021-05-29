@@ -50,8 +50,10 @@ public class App extends Application {
         Producer producer = new Producer();
         Systemadministrator systemadministrator = new Systemadministrator();
 
-
+        //Here we load the information from the database into the system
         sys.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
+        sys.loadPersonFromDatabase();
+        sys.loadCreditsFromDatabase();
         
 
 
@@ -78,28 +80,11 @@ public class App extends Application {
         System.out.println("List of Credit:  ");
         for (int i = 0; i < System1.listOfCredit.size(); i++){
             Credit credit = System1.listOfCredit.get(i);
-            System.out.println("Name: " +credit.getpName() + "  ID " + credit.getpID() + credit.getPersonRole());
+            System.out.println("P_ID: " + credit.getpID() + "Name: " +credit.getpName() + "   Role: " + credit.getPersonRole() + " Credit nr " + credit.getCreditID());
         }
         System.out.println(" -------------");
 
 
-
-
-
-
-
-
-        //Inserting a user into the database:
-       /* try {
-            String a = "Kameramand";
-            int b = 10;
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO credit (role, personid_fk) VALUES (?,?)");
-            insertStatement.setString(1, a);
-            insertStatement.setInt(2,b);
-            insertStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }*/
         System.out.println("PROGRAMMET VIRKER");
 
 

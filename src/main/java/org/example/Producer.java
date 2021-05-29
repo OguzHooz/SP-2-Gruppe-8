@@ -22,14 +22,7 @@ public class Producer {
 
         String name = " ";
         //For loop for showing the list of people
-        System.out.println("Liste over personer i systemet ");
-        for (int i = 0; i < System1.listOfPersons.size(); i++) {
-            int personID = System1.listOfPersons.get(i).getPersonID();
-            String personName = System1.listOfPersons.get(i).getPersonName();
-            String personInformation = System1.listOfPersons.get(i).getPersonInformation();
 
-            System.out.println("ID: " + personID + "  " + personName + "  " + personInformation);
-        }
 
         //We start by importing the scanner
         Scanner myObj = new Scanner(System.in);
@@ -39,46 +32,36 @@ public class Producer {
         System.out.println("Indtast ID på person som du vil give role ");
         int personID = myObj.nextInt(); //This should be a textfield on the GUI
 
-
-        //enter persons role
-        System.out.println("Indtast personens rolle ");
+        System.out.println("Indtast rollen som personen skal have ");
         String role = myString.nextLine(); //This should be a textfield on the GUI
-        // this i where we asign the role
-        for (int i =0; i<System1.listOfPersons.size();i++){
-            if (personID == System1.listOfPersons.get(i).getPersonID()) {
-                Person person = System1.listOfPersons.get(i);
-                int p_ID = person.getPersonID();
-                String p_name = person.getPersonName();
 
-                Credit personCredit = new Credit(person,role, p_ID, p_name);
-                System1.listOfCredit.add(personCredit);
-                name = p_name;
+
+        //This loop checks if the person exists in the system, if they do they get a role and gets added to the system.
+        for (int i = 0; i < System1.listOfPersons.size(); i++) {
+            Person person = System1.listOfPersons.get(i);
+            int p_id = System1.listOfPersons.get(i).getPersonID();
+            String personName = System1.listOfPersons.get(i).getPersonName();
+            String personInformation = System1.listOfPersons.get(i).getPersonInformation();
+
+            if (personID == p_id){
+                Credit credit = new Credit(person, role, personID,personName);
+                System1.listOfCredit.add(credit);
+                System.out.println("The Person " + personName + " has been added with the role of " + role);
+
+                try {
+                    PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO credit (role, personid_fk) VALUES (?, ?)");
+                    insertStatement.setString(1, role);
+                    insertStatement.setInt(2, personID);
+                    insertStatement.execute();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
             }
             else {
                 System.out.println(" ");
             }
         }
-
-        try {
-            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO credit (role, personid_fk) VALUES (?, ?)");
-            insertStatement.setString(1, role);
-            insertStatement.setInt(2, personID);
-            insertStatement.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-//For loop for showing the list of Credit
-        System.out.println("Liste over Credits i systemet ");
-        for (int i = 0; i < System1.listOfCredit.size(); i++) {
-
-            String personRole = System1.listOfCredit.get(i).getPersonRole();
-            String personName = System1.listOfCredit.get(i).getpName();
-            int pID = System1.listOfCredit.get(i).getpID();
-
-            //Little text so it looks nice (and to confirm that a credit has been added to the system)
-            System.out.println( "----"+ "Person ID: " + pID + " Name:  " + personName +  " Role:   " + personRole + "----");
-        }
-        System.out.println(" Personen  " +  name  + " har fået rollen " + role);
 
     }
 
@@ -194,7 +177,6 @@ public class Producer {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
 
 
         try {
