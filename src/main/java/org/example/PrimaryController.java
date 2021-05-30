@@ -281,7 +281,7 @@ public class PrimaryController {
                 e.printStackTrace();
             }
 
-            //Here we add the programs in the database to the ListOfPrograms list:
+            //Here we access the database:
             try {
                 statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM user_data");
@@ -295,8 +295,8 @@ public class PrimaryController {
 
                 while (resultSet.next()) {
                     System.out.println("User Login:");
-                    String user_email = resultSet.getString("user_email");
-                    String password = resultSet.getString("user_password");
+                    String user_email = resultSet.getString("user_email"); //username from the texfield
+                    String password = resultSet.getString("user_password"); //password from the texfield
                     int userAccess = resultSet.getInt("user_access_level");
 
                     if (inputEmail.contains(user_email)  && inputPassword.contains(password)) {
@@ -313,6 +313,7 @@ public class PrimaryController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
     }
 
     public int getCurrentAccessLevel() {

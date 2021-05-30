@@ -233,7 +233,7 @@ public class User {
 
         //Adding the program to the database
 
-        //Create database
+        //Connect to database
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
             connection = DriverManager.getConnection(
@@ -254,7 +254,6 @@ public class User {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Du har ikke adgang til denne metode ");
     }
 
 
@@ -275,14 +274,7 @@ public class User {
         }
 
 
-        //We start by importing the scanner
-        Scanner myObj = new Scanner(System.in);
-
-        System.out.println("Du kan fjerne følgende programmer: ");
-
-
-        System.out.println("Indtast ID på det program du vil fjerne  ");
-        int idRemover = inputProgramID; //This should be a textfield/button on the GUI
+        int idRemover = inputProgramID; //The ID of the program that we want to delete
 
         for (int i = 0; i < System1.listOfPrograms.size(); i++) { //This forloop is for looking for the different programs ID's
             if (idRemover == System1.listOfPrograms.get(i).getProgramID()) {
@@ -291,7 +283,6 @@ public class User {
                 continue;
             }
         }
-
 
         try {
 
@@ -327,23 +318,23 @@ public class User {
             e.printStackTrace();
         }
 
-
-        Scanner input = new Scanner(System.in);
         String personName;
         String personInformation;
 
-        System.out.print ("Enter name: ");
-        personName = person_name;
 
-        System.out.print ("Enter person information: ");
-        personInformation = person_information;
+        personName = person_name; //The person name
+
+        personInformation = person_information; //The person email
 
         Person person = new Person (1 ,personName, personInformation);
 
         System.out.println();
-        System.out.print ("The new person has successfully been added." + "\n");
+        System.out.print ("The new person has successfully been added." + "\n"); //This print is to confirm the creation
 
         System1.listOfPersons.add(person);
+
+        System1 system1 = new System1();
+
 
 
         // Here the person gets added to the database
@@ -357,6 +348,8 @@ public class User {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        system1.loadPersonFromDatabase();
+
     }
 
     public boolean removePerson(int person_id) {
