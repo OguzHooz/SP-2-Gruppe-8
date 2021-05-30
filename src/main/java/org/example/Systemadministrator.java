@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Systemadministrator {
 
     public static void createPerson() {
+
         Scanner input = new Scanner(System.in);
         String personName;
         String personInformation;

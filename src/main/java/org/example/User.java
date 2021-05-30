@@ -275,6 +275,80 @@ public class User {
         }
     }
 
+    public static void createPerson(String person_name, String person_information) {
+
+        //Connect To database
+        try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost:5432/SemesterProjektDatabase",
+                    "postgres",
+                    "hudmanbat3103");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        Scanner input = new Scanner(System.in);
+        String personName;
+        String personInformation;
+
+        System.out.print ("Enter name: ");
+        personName = person_name;
+
+        System.out.print ("Enter person information: ");
+        personInformation = person_information;
+
+        Person person = new Person (1 ,personName, personInformation);
+
+        System.out.println();
+        System.out.print ("The new person has successfully been added." + "\n");
+
+        System1.listOfPersons.add(person);
+
+
+        // Here the person gets added to the database
+        try {
+            PreparedStatement insertStatement = connection.prepareStatement("INSERT INTO persondata (person_name, information) VALUES (?,?)");
+            insertStatement.setString(1, personName);
+            insertStatement.setString(2, personInformation);
+            insertStatement.execute();
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean removePerson(int person_id) {
+        //We start by importing the scanner
+        Scanner myObj = new Scanner(System.in);
+
+        System.out.println("Indtast ID på den person du vil fjerne  ");
+        int idRemover = person_id; //This should be a textfield/button on the GUI
+
+        for (int i = 0; i < System1.listOfPersons.size(); i++){ //This forloop is for looking for the different person ID's
+            if (idRemover == System1.listOfPersons.get(i).getPersonID()){
+                System.out.println(System1.listOfPersons.get(i).getPersonName() + " (Fjernet)");
+                System1.listOfPersons.remove(i);
+            }
+            else {
+                continue;
+            }
+        }
+
+        try {
+
+            PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM  persondata WHERE person_id = ?");
+            deleteStatement.setInt(1,idRemover);
+            return deleteStatement.execute();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
     public int generateUserID() {
