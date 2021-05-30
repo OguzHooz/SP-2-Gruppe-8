@@ -61,6 +61,9 @@ public class PrimaryController {
     @FXML
     private Button deleteCreditButton;
 
+    @FXML
+    private TextArea listOfProgramsTextArea;
+
 
     @FXML
     private Button deleteProgramButton;
@@ -92,7 +95,23 @@ public class PrimaryController {
     @FXML
     private TextField roleTextField;
 
+    @FXML
+    private Button listOfProgramsButton;
+
     Statement statement = null;
+
+    public void showProgramList (ActionEvent e) throws IOException{
+        User user = new User();
+
+        String a = "Hey";
+        String b = "Yo";
+
+        Object objects =System1.tableViewArray.stream().toArray();
+        listOfProgramsTextArea.setText(objects.toString());
+
+
+
+    }
 
 
     public void createCreditButton (ActionEvent e) throws IOException{
@@ -148,11 +167,6 @@ public class PrimaryController {
 
     }
 
-    public void removeCreditButton (ActionEvent e) throws IOException{
-        User user = new User();
-
-
-    }
 
 
     //Når man trykker på createCredit

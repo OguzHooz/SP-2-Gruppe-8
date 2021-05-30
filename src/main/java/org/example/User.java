@@ -342,6 +342,8 @@ public class User {
     }
 
     public void printProgramList(){
+        System.out.println("HEY");
+
 
     }
 
