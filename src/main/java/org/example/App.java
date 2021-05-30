@@ -55,6 +55,7 @@ public class App extends Application {
         sys.loadPersonFromDatabase();
         sys.loadCreditsFromDatabase();
         sys.insertProgramTitle();
+        sys.loadCreditInProgram();
         
 
 
@@ -63,6 +64,11 @@ public class App extends Application {
         for (int i = 0; i < System1.listOfPrograms.size(); i++){
             Program program = System1.listOfPrograms.get(i);
             System.out.println("Title: " +program.getTitle() + "  ID " + program.getProgramID());
+
+            for (int j = 0; j < program.creditInProgramArray.size(); j++){
+                String a = program.creditInProgramArray.get(j);
+                System.out.println(a + "HEY");
+            }
         }
 
         //Test for checking if the Person are there
@@ -88,6 +94,7 @@ public class App extends Application {
 
 
         User user = new User();
+
 
 
 

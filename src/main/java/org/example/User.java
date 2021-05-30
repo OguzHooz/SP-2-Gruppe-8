@@ -38,7 +38,7 @@ public class User {
 
     static Connection connection = null;
 
-    public void loadCreditFromProgram(int inputProgramID){
+    public void showCreditFromProgram(int inputProgramID){
         for (int i = 0; i < System1.listOfPrograms.size(); i++){
             Program program = System1.listOfPrograms.get(i);
 
@@ -66,6 +66,7 @@ public class User {
         }
 
     }
+
 
 
     public String[] arrayListToArray (ArrayList<String> arr) {
@@ -138,16 +139,27 @@ public class User {
             e.printStackTrace();
         }
 
-
-        //We ask for the ProgramID and the CreditID
-        Scanner programIDScan = new Scanner(System.in);
-        Scanner creditIDScan = new Scanner(System.in);
-
         System.out.println("Please the program id that you wish to add credits to ");
         int programID = program_id; //Input the id nr
 
         System.out.println("Please the credit id that you wish to add credits to ");
-        int creditID = credit_id; //The credit ID
+        int creditID = credit_id; //The credit
+
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            Program program = System1.listOfPrograms.get(i);
+
+
+            if (program.getProgramID() == program_id){
+                for (int j = 0; j < System1.listOfCredit.size(); j++){
+                    Credit credit = System1.listOfCredit.get(i);
+                    int tempCreditID = credit.getCreditID();
+
+                    if (creditID == tempCreditID){
+                        program.creditsInProgram.add(credit);
+                    }
+                }
+            }
+        }
 
 
         //Here we add the Credit to the chosen Program into the database
@@ -200,27 +212,21 @@ public class User {
 
     public void addProgram(String p_title, String p_release) {
 
-        //We start by importing the scanner
-        Scanner myObj = new Scanner(System.in);
 
-        //Start by asking for the movie title
-        System.out.println("Indtast navnet på din film ");
-        String title = p_title; //This should be a textfield on the GUI
+        String title = p_title; //This is the Program title
 
         //Ask for the release date
-        System.out.println("Indtast navnet på din udgivelsesdato på din film ");
-        String releaseD = p_release; //This should be a textfield on the GUI
+        String releaseD = p_release; //This is the Program release date
+
         Program test = new Program(0, null, null);
 
-
-        //Program ID
 
         //Here we create the new program
         Program p = new Program(test.generateProgramID(), title, releaseD);
 
-        System.out.println("Nu er filmen blevet tilføjet ");
+        System.out.println("Nu er filmen blevet tilføjet "); //a confirmation so that we know it's been added
 
-        System.out.println("Filmen " + title + " har ID " + test.getProgramID());
+        System.out.println("Filmen " + title + " har ID " + test.getProgramID()); // a confirmation so that we know the values
 
         //Here we add the newly created program to the array
         System1.listOfPrograms.add(p);

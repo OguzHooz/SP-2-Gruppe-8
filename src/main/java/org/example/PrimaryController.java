@@ -6,6 +6,7 @@ import java.net.URL;
 import java.nio.file.LinkOption;
 import java.nio.file.LinkPermission;
 import java.sql.*;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import javafx.beans.Observable;
@@ -101,28 +102,53 @@ public class PrimaryController {
     private TextField roleTextField;
 
     @FXML
+    private ListView<String> creditListInProgramList;
+
+
+
+    @FXML
     private Button listOfProgramsButton;
 
     Statement statement = null;
 
     public void showCreditListInProgram(ActionEvent e) throws IOException{
         System1 system1 = new System1();
-
         User user = new User();
+
         system1.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
         system1.loadPersonFromDatabase();
         system1.loadCreditsFromDatabase();
         system1.insertProgramTitle();
+        system1.loadCreditInProgram();
 
         String programID_raw = findProgramID.getText();
 
-        int programID = Integer.parseInt(programID_raw);
+        int programID = 17;//Integer.parseInt(programID_raw);
 
-        String gang[] = user.arrayListToArray(System1.creditInProgramArray);
 
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            Program program = System1.listOfPrograms.get(i);
+            int programTempID = program.getProgramID();
+
+            if (programID == programTempID){
+                String creditList[] = user.arrayListToArray(program.creditInProgramArray);
+
+                for (int j = 0; j < program.creditInProgramArray.size(); j++){
+                    String a = program.creditInProgramArray.get(j);
+                    System.out.println(a);
+                }
+                creditListInProgramList.getItems().addAll(creditList);
+                System.out.println(Arrays.toString(creditList));
+            }
+
+        }
+        user.showCreditFromProgram(programID);
 
 
     }
+
+
+
 
     public void showProgramList (ActionEvent e) throws IOException{
         System1 system1 = new System1();
@@ -136,7 +162,6 @@ public class PrimaryController {
         String listOfPrograms[] = user.arrayListToArray(System1.tableViewArray);
 
         programListView.getItems().addAll(listOfPrograms);
-
 
 
     }

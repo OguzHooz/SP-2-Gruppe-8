@@ -10,9 +10,11 @@ public class Program {
     //AtomicInteger count = new AtomicInteger(0);
     private static final AtomicInteger programCounter = new AtomicInteger(0);
 
-    ArrayList<Credit> creditsInProgram = new ArrayList<Credit>();
 
+    ArrayList<Credit> creditsInProgram = new ArrayList<Credit>();
+    ArrayList<String> creditInProgramArray = new ArrayList<String>();
     //Overloading this constructor so it's possible to create other objects
+
     public Program (int programID, String title, String releaseDate){
         //We start by initializing the variables
         this.programID = programID;

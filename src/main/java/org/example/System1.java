@@ -22,6 +22,28 @@ public class System1 {
     ArrayList<Credit> tempArraylist = new ArrayList<Credit>(); //it gets used in the load credits method
     Statement statement = null;
 
+    public void loadCreditInProgram(){
+        for (int i = 0; i < listOfPrograms.size(); i++){
+            Program program = listOfPrograms.get(i);
+            int programID = program.getProgramID();
+
+            for (int j = 0; j < program.creditsInProgram.size(); j++){
+                Credit credit = program.creditsInProgram.get(j);
+                String name = credit.getpName();
+                int creditID = credit.getCreditID();
+                String role = credit.getPersonRole();
+
+                String completeCredit = (creditID + " Name " + name + " as " + role);
+                program.creditInProgramArray.add(completeCredit);
+                //creditInProgramArray.add(completeCredit);
+
+            }
+
+
+
+        }
+    }
+
 
     public void insertProgramTitle(){
 
