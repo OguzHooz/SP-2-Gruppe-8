@@ -4,29 +4,29 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
-    <AnchorPane layoutX="332.0" layoutY="71.0" prefHeight="400.0" prefWidth="600.0">
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
+    <AnchorPane layoutX="332.0" layoutY="71.0" prefHeight="471.0" prefWidth="600.0">
         <children>
 
             <Button layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#TilbageClicked" text="Tilbage" />
             <TextField fx:id="SearchbarPro" layoutX="222.0" layoutY="13.0" prefHeight="25.0" prefWidth="181.0" text="Search bar" />
-            <Button layoutX="441.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Send to verification" />
-         <TextField fx:id="programTitleTextField" layoutX="288.0" layoutY="175.0" prefHeight="25.0" prefWidth="100.0" />
-         <TextField fx:id="udgivelsesDatoTextField" layoutX="399.0" layoutY="175.0" prefHeight="25.0" prefWidth="84.0" />
-         <Button fx:id="createProgramButton" layoutX="486.0" layoutY="175.0" mnemonicParsing="false" onAction="#createProgramGUI" text="Create Program" />
-         <Label layoutX="286.0" layoutY="158.0" text="Programtitle:" />
-         <Label layoutX="399.0" layoutY="158.0" text="Udgivelsesdato:" />
-         <TextField fx:id="programIDTextField" layoutX="285.0" layoutY="291.0" prefHeight="25.0" prefWidth="69.0" />
-         <TextField fx:id="creditIdTextfield" layoutX="394.0" layoutY="291.0" prefHeight="25.0" prefWidth="69.0" />
-         <Label layoutX="288.0" layoutY="274.0" text="Program ID:" />
-         <Label layoutX="394.0" layoutY="274.0" text="Credit ID:" />
-         <Button fx:id="addCreditButton" layoutX="486.0" layoutY="291.0" mnemonicParsing="false" onAction="#addCreditToProgramGUI" prefHeight="25.0" prefWidth="100.0" text="Add Credit " />
-         <Label layoutX="288.0" layoutY="105.0" text="Tilføj Program">
+            <Button fx:id="systemAdminButton" layoutX="431.0" layoutY="13.0" mnemonicParsing="false" onAction="#setSystemAdminButton" prefHeight="25.0" prefWidth="168.0" text="Systemadmin: Indstillinger" />
+         <TextField fx:id="programTitleTextField" layoutX="263.0" layoutY="123.0" prefHeight="25.0" prefWidth="100.0" />
+         <TextField fx:id="udgivelsesDatoTextField" layoutX="387.0" layoutY="123.0" prefHeight="25.0" prefWidth="84.0" />
+         <Button fx:id="createProgramButton" layoutX="486.0" layoutY="123.0" mnemonicParsing="false" onAction="#createProgramGUI" text="Create Program" />
+         <Label layoutX="266.0" layoutY="99.0" text="Programtitle:" />
+         <Label layoutX="387.0" layoutY="91.0" text="Udgivelsesdato:" />
+         <TextField fx:id="programIDTextField" layoutX="261.0" layoutY="211.0" prefHeight="25.0" prefWidth="69.0" />
+         <TextField fx:id="creditIdTextfield" layoutX="391.0" layoutY="211.0" prefHeight="25.0" prefWidth="69.0" />
+         <Label layoutX="263.0" layoutY="192.0" text="Program ID:" />
+         <Label layoutX="393.0" layoutY="192.0" text="Credit ID:" />
+         <Button fx:id="addCreditButton" layoutX="486.0" layoutY="211.0" mnemonicParsing="false" onAction="#addCreditToProgramGUI" prefHeight="25.0" prefWidth="100.0" text="Add Credit " />
+         <Label layoutX="263.0" layoutY="65.0" text="Tilføj Program">
             <font>
                <Font size="18.0" />
             </font>
          </Label>
-         <Label layoutX="288.0" layoutY="243.0" text="Add Credit to Program">
+         <Label layoutX="264.0" layoutY="165.0" text="Add Credit to Program">
             <font>
                <Font size="18.0" />
             </font>
@@ -36,7 +36,28 @@
                <Font size="21.0" />
             </font>
          </Label>
-         <TextArea fx:id="testTexArea" layoutX="49.0" layoutY="107.0" prefHeight="233.0" prefWidth="200.0" />
+         <TextArea fx:id="testTexArea" layoutX="49.0" layoutY="107.0" prefHeight="222.0" prefWidth="200.0" />
+         <Label layoutX="395.0" layoutY="108.0" text="dd/mm/yyyy" />
+         <Label layoutX="264.0" layoutY="248.0" text="Create a person">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <TextField fx:id="person_nameTextField" layoutX="261.0" layoutY="295.0" prefHeight="25.0" prefWidth="69.0" />
+         <TextField fx:id="personInformationTextField" layoutX="389.0" layoutY="295.0" prefHeight="25.0" prefWidth="84.0" />
+         <Label layoutX="260.0" layoutY="275.0" text="Name:" />
+         <Label layoutX="389.0" layoutY="275.0" text="E-mail:" />
+         <Label layoutX="260.0" layoutY="339.0" text="Create Credit">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </Label>
+         <Label layoutX="263.0" layoutY="375.0" text="Person ID:" />
+         <Label layoutX="389.0" layoutY="375.0" text="Enter Role:" />
+         <TextField fx:id="personIDTextField" layoutX="261.0" layoutY="392.0" prefHeight="25.0" prefWidth="69.0" />
+         <TextField fx:id="roleTextField" layoutX="389.0" layoutY="392.0" prefHeight="25.0" prefWidth="84.0" />
+         <Button layoutX="486.0" layoutY="295.0" mnemonicParsing="false" onAction="#createPersonButton" prefHeight="25.0" prefWidth="100.0" text="Create Person" />
+         <Button layoutX="487.0" layoutY="392.0" mnemonicParsing="false" onAction="#createCreditButton" prefHeight="25.0" prefWidth="100.0" text="Create Credit" />
         </children>
     </AnchorPane>
 </VBox>

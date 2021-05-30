@@ -36,7 +36,7 @@ public class User {
 
     static Connection connection = null;
 
-    public void createCredit() {
+    public void createCredit(int input_personID, String input_role) {
         //Connect to database
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -48,20 +48,13 @@ public class User {
             e.printStackTrace();
         }
 
-        String name = " ";
-        //For loop for showing the list of people
-
-
-        //We start by importing the scanner
-        Scanner myObj = new Scanner(System.in);
-        Scanner myString = new Scanner(System.in);
 
         //Start by asking for the persons ID
         System.out.println("Indtast ID på person som du vil give role ");
-        int personID = myObj.nextInt(); //This should be a textfield on the GUI
+        int personID = input_personID; //This should be a textfield on the GUI
 
         System.out.println("Indtast rollen som personen skal have ");
-        String role = myString.nextLine(); //This should be a textfield on the GUI
+        String role = input_role; //This should be a textfield on the GUI
 
 
         //This loop checks if the person exists in the system, if they do they get a role and gets added to the system.
@@ -69,7 +62,6 @@ public class User {
             Person person = System1.listOfPersons.get(i);
             int p_id = System1.listOfPersons.get(i).getPersonID();
             String personName = System1.listOfPersons.get(i).getPersonName();
-            String personInformation = System1.listOfPersons.get(i).getPersonInformation();
 
             if (personID == p_id) {
                 Credit credit = new Credit(person, role, personID, personName);
@@ -275,7 +267,7 @@ public class User {
         }
     }
 
-    public static void createPerson(String person_name, String person_information) {
+    public void createPerson(String person_name, String person_information) {
 
         //Connect To database
         try {

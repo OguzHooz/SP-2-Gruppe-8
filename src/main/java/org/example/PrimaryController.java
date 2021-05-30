@@ -34,6 +34,8 @@ public class PrimaryController {
     @FXML
     private TextField creditIdTextfield;
 
+    @FXML
+    private Button systemAdminButton;
 
     @FXML
     private TextField programTitleTextField;
@@ -53,9 +55,62 @@ public class PrimaryController {
     @FXML
     private Button createProgramButton;
 
+    @FXML
+    private Button deleteCreditButton;
+
+    @FXML
+    private TextField removeProgramIDTextField;
+
+    @FXML
+    private Button deleteProgramButton;
+
+    @FXML
+    private TextField removePersonIdTextField;
+
+    @FXML
+    private Button deletePersonButton;
+
+    @FXML
+    private TextArea testTexArea;
+
+    @FXML
+    private TextField removeCreditIDTextField;
+
+
+    @FXML
+    private TextField person_nameTextField;
+
+    @FXML
+    private TextField personInformationTextField;
+
+    @FXML
+    private TextField personIDTextField;
+
+    @FXML
+    private TextField roleTextField;
+
     Statement statement = null;
 
 
+    public void createCreditButton (ActionEvent e) throws IOException{
+        User user = new User();
+        String personID_Raw = personIDTextField.getText();
+        String personRole = roleTextField.getText();
+
+        //We convert ID to int
+        int person_id = Integer.parseInt(personID_Raw);
+
+        user.createCredit(person_id, personRole);
+
+
+    }
+
+    public void createPersonButton (ActionEvent e) throws IOException{
+        User user = new User();
+        String person_name = person_nameTextField.getText();
+        String person_information = personInformationTextField.getText();
+        user.createPerson(person_name, person_information);
+    }
 
     //Når man trykke på lav et program knappen
     public void createProgramGUI (ActionEvent e) throws IOException{
@@ -109,6 +164,10 @@ public class PrimaryController {
 
     public void ForgotPasswordClicked(MouseEvent mouseEvent) {
 
+    }
+
+    public void setSystemAdminButton (ActionEvent e) throws IOException{
+        App.setRoot("Systemadministrator");
     }
 
     public void logInPressed (MouseEvent mouseEvent) throws IOException{ //LOG IN METHOD
