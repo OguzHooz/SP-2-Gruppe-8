@@ -32,6 +32,9 @@ public class PrimaryController {
     private PasswordField PasswordLogin;
 
     @FXML
+    private TextField removePersonIDTextF;
+
+    @FXML
     private TextField creditIdTextfield;
 
     @FXML
@@ -58,14 +61,14 @@ public class PrimaryController {
     @FXML
     private Button deleteCreditButton;
 
-    @FXML
-    private TextField removeProgramIDTextField;
 
     @FXML
     private Button deleteProgramButton;
 
     @FXML
     private TextField removePersonIdTextField;
+
+    private TextField removeProgramIDTextF;
 
     @FXML
     private Button deletePersonButton;
@@ -120,6 +123,34 @@ public class PrimaryController {
         String release = udgivelsesDatoTextField.getText();
 
         user.addProgram(title, release);
+
+    }
+
+    public void removePersonButton (ActionEvent e) throws IOException{
+        User user = new User();
+
+        String person_ID_raw = removePersonIdTextField.getText();
+
+        int personID = Integer.parseInt(person_ID_raw);
+
+        user.removePerson(personID);
+    }
+
+    public void removeProgramButton (ActionEvent e) throws IOException{ //FUNGERE IKKE ENDNU
+        User user = new User();
+
+        String programID_RAW = removeProgramIDTextF.getId();
+
+        int programID = Integer.parseInt(programID_RAW);
+
+        user.removeProgram(programID);
+
+
+    }
+
+    public void removeCreditButton (ActionEvent e) throws IOException{
+        User user = new User();
+
 
     }
 

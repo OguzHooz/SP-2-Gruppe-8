@@ -214,7 +214,7 @@ public class User {
 
 
 
-    public boolean removeProgram() {
+    public boolean removeProgram(int inputProgramID) {
 
         //Connection database
         try {
@@ -235,7 +235,7 @@ public class User {
 
 
         System.out.println("Indtast ID på det program du vil fjerne  ");
-        int idRemover = myObj.nextInt(); //This should be a textfield/button on the GUI
+        int idRemover = inputProgramID; //This should be a textfield/button on the GUI
 
         for (int i = 0; i < System1.listOfPrograms.size(); i++) { //This forloop is for looking for the different programs ID's
             if (idRemover == System1.listOfPrograms.get(i).getProgramID()) {
@@ -339,6 +339,10 @@ public class User {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public void printProgramList(){
+
     }
 
 

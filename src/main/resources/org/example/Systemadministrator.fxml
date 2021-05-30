@@ -15,37 +15,35 @@
 
             <Button layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#TilbageClicked" text="Tilbage" />
             <TextField fx:id="SearchbarPro" layoutX="222.0" layoutY="13.0" prefHeight="25.0" prefWidth="181.0" text="Search bar" />
-            <TextField fx:id="removeProgramIDTextField" layoutX="376.0" layoutY="123.0" prefHeight="25.0" prefWidth="100.0" />
-            <Button fx:id="deleteProgramButton" layoutX="486.0" layoutY="123.0" mnemonicParsing="false" text="Slet Program" />
-            <Label layoutX="373.0" layoutY="99.0" text="programID:" />
-            <TextField fx:id="removePersonIdTextField" layoutX="375.0" layoutY="211.0" prefHeight="25.0" prefWidth="69.0" />
-            <Label layoutX="377.0" layoutY="192.0" text="Person ID:" />
-            <Button fx:id="deletePersonButton" layoutX="486.0" layoutY="211.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Slet Person " />
-            <Label layoutX="255.0" layoutY="65.0" text="Slet et Program">
+            <Button fx:id="deleteProgramButton" layoutX="155.0" layoutY="391.0" mnemonicParsing="false" onAction="#removeProgramButton" text="Slet Program" />
+            <Label layoutX="42.0" layoutY="367.0" text="programID:" />
+            <TextField fx:id="removePersonIdTextField" layoutX="389.0" layoutY="378.0" prefHeight="25.0" prefWidth="69.0" />
+            <Label layoutX="391.0" layoutY="359.0" text="Person ID:" />
+            <Button fx:id="deletePersonButton" layoutX="500.0" layoutY="378.0" mnemonicParsing="false" onAction="#removePersonButton" prefHeight="25.0" prefWidth="100.0" text="Slet Person " />
+            <Label layoutX="42.0" layoutY="328.0" text="Slet et Program">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="260.0" layoutY="165.0" text="Slet en Person">
+            <Label layoutX="274.0" layoutY="332.0" text="Slet en Person">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="67.0" layoutY="63.0" text="List of Programs">
+            <Label layoutX="43.0" layoutY="69.0" text="List of Programs">
                 <font>
                     <Font size="21.0" />
                 </font>
             </Label>
             <TextArea fx:id="testTexArea" layoutX="42.0" layoutY="100.0" prefHeight="222.0" prefWidth="200.0" />
-            <Label layoutX="264.0" layoutY="248.0" text="Slet Kredit">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </Label>
-            <TextField fx:id="removeCreditIDTextField" layoutX="375.0" layoutY="295.0" prefHeight="25.0" prefWidth="69.0" />
-            <Label layoutX="374.0" layoutY="275.0" text="Kredit ID" />
-            <Button fx:id="deleteCreditButton" layoutX="486.0" layoutY="295.0" mnemonicParsing="false" onAction="#createPersonButton" prefHeight="25.0" prefWidth="100.0" text="Slet Kredit" />
          <ScrollBar layoutX="235.0" layoutY="100.0" orientation="VERTICAL" prefHeight="222.0" prefWidth="14.0" />
+         <TextField fx:id="removeProgramIDTextF" layoutX="43.0" layoutY="391.0" prefHeight="25.0" prefWidth="69.0" />
+         <Label layoutX="329.0" layoutY="69.0" text="List of People">
+            <font>
+               <Font size="21.0" />
+            </font>
+         </Label>
+         <TextArea layoutX="331.0" layoutY="100.0" prefHeight="222.0" prefWidth="200.0" />
         </children>
     </AnchorPane>
 </VBox>
