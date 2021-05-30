@@ -16,10 +16,11 @@ public class System1 {
     static ArrayList<Program> listOfPrograms = new ArrayList<Program>();
     static ArrayList<Credit> listOfCredit = new ArrayList<Credit>();
     static ArrayList<String> tableViewArray = new ArrayList<String>();
+    static ArrayList<String> creditInProgramArray = new ArrayList<String>();
+
     static Connection connection = null;
     ArrayList<Credit> tempArraylist = new ArrayList<Credit>(); //it gets used in the load credits method
     Statement statement = null;
-
 
 
     public void insertProgramTitle(){

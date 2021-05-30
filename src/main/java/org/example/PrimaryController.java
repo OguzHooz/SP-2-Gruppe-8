@@ -95,12 +95,34 @@ public class PrimaryController {
     private TextField personIDTextField;
 
     @FXML
+    private TextField findProgramID;
+
+    @FXML
     private TextField roleTextField;
 
     @FXML
     private Button listOfProgramsButton;
 
     Statement statement = null;
+
+    public void showCreditListInProgram(ActionEvent e) throws IOException{
+        System1 system1 = new System1();
+
+        User user = new User();
+        system1.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
+        system1.loadPersonFromDatabase();
+        system1.loadCreditsFromDatabase();
+        system1.insertProgramTitle();
+
+        String programID_raw = findProgramID.getText();
+
+        int programID = Integer.parseInt(programID_raw);
+
+        String gang[] = user.arrayListToArray(System1.creditInProgramArray);
+
+
+
+    }
 
     public void showProgramList (ActionEvent e) throws IOException{
         System1 system1 = new System1();

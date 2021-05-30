@@ -38,6 +38,36 @@ public class User {
 
     static Connection connection = null;
 
+    public void loadCreditFromProgram(int inputProgramID){
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            Program program = System1.listOfPrograms.get(i);
+
+            String program_name = program.getTitle();
+            int program_id = program.getProgramID();
+            String program_releaseDate = program.getReleaseDate();
+
+            String completeTitle = "ID " + program_id + ": " + program_name + " " + program_releaseDate;
+
+            if (inputProgramID == program_id){
+                for (int j = 0; j < program.creditsInProgram.size(); j++){
+                    Credit credit = program.creditsInProgram.get(j);
+                    int creditID = credit.getCreditID();
+                    String p_name = credit.getpName();
+                    String p_role = credit.getPersonRole();
+
+                    String personTitle = (creditID + ": " + p_name + " Role: " + p_role);
+                    System1.creditInProgramArray.add(personTitle);
+                }
+            }
+            else{
+                System.out.println(" ");
+            }
+
+        }
+
+    }
+
+
     public String[] arrayListToArray (ArrayList<String> arr) {
         String str[] = new String[arr.size()];
 
