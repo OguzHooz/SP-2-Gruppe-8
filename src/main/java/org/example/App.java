@@ -54,6 +54,7 @@ public class App extends Application {
         sys.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
         sys.loadPersonFromDatabase();
         sys.loadCreditsFromDatabase();
+        sys.insertProgramTitle();
         
 
 
@@ -73,16 +74,6 @@ public class App extends Application {
         }
         System.out.println(" -------------");
 
-
-
-        //Test for checking if the Credit are there
-        System.out.println("----------------");
-        System.out.println("List of Credit:  ");
-        for (int i = 0; i < System1.listOfCredit.size(); i++){
-            Credit credit = System1.listOfCredit.get(i);
-            System.out.println("P_ID: " + credit.getpID() + "Name: " +credit.getpName() + "   Role: " + credit.getPersonRole() + " Credit nr " + credit.getCreditID());
-        }
-        System.out.println(" -------------");
 
 
         System.out.println("PROGRAMMET VIRKER");

@@ -1,5 +1,8 @@
 package org.example;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,11 +15,28 @@ public class System1 {
     static ArrayList<User> listOfUsers = new ArrayList<User>();
     static ArrayList<Program> listOfPrograms = new ArrayList<Program>();
     static ArrayList<Credit> listOfCredit = new ArrayList<Credit>();
+    static ArrayList<String> tableViewArray = new ArrayList<String>();
     static Connection connection = null;
     ArrayList<Credit> tempArraylist = new ArrayList<Credit>(); //it gets used in the load credits method
     Statement statement = null;
 
 
+
+    public void insertProgramTitle(){
+
+        for (int i = 0; i < System1.listOfPrograms.size(); i++){
+            Program program = System1.listOfPrograms.get(i);
+
+            String program_name = program.getTitle();
+            String program_id = Integer.toString(program.getProgramID());
+            String program_releaseDate = program.getReleaseDate();
+
+            String completeTitle = "ID " + program_id + ": " + program_name + " " + program_releaseDate;
+            tableViewArray.add(completeTitle);
+
+        }
+
+    }
 
 
     public void loadPersonFromDatabase(){
