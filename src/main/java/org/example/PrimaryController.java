@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -33,7 +34,15 @@ public class PrimaryController {
     @FXML
     private TextField creditIdTextfield;
 
+
+    @FXML
     private TextField programTitleTextField;
+
+    @FXML
+    private TextField udgivelsesDatoTextField;
+
+    @FXML
+    private TextField programIDTextField;
 
 
     @FXML
@@ -49,10 +58,29 @@ public class PrimaryController {
 
 
     //Når man trykke på lav et program knappen
-    public void createProgramGUI (MouseEvent mouseEvent) throws IOException{
+    public void createProgramGUI (ActionEvent e) throws IOException{
 
         User user = new User();
-        user.addProgram();
+        String title = programTitleTextField.getText();
+        String release = udgivelsesDatoTextField.getText();
+
+        user.addProgram(title, release);
+
+    }
+
+
+    //Når man trykker på createCredit
+    public void addCreditToProgramGUI (ActionEvent event) throws IOException{
+        User user = new User();
+        String program_id_field = programIDTextField.getText();
+        String credit_id_field = creditIdTextfield.getText();
+
+        //Here we convert the text from String to Int
+        int program_id = Integer.parseInt(program_id_field);
+        int credit_id = Integer.parseInt(credit_id_field);
+
+        user.addCreditToProgram(program_id,credit_id);
+
 
     }
 

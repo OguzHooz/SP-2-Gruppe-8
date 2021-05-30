@@ -93,7 +93,7 @@ public class User {
     }
 
 
-    public void addCreditToProgram() {
+    public void addCreditToProgram(int program_id, int credit_id) {
         //Connect to database
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
@@ -111,10 +111,10 @@ public class User {
         Scanner creditIDScan = new Scanner(System.in);
 
         System.out.println("Please the program id that you wish to add credits to ");
-        int programID = programIDScan.nextInt(); //Input the id nr
+        int programID = program_id; //Input the id nr
 
         System.out.println("Please the credit id that you wish to add credits to ");
-        int creditID = creditIDScan.nextInt(); //The credit ID
+        int creditID = credit_id; //The credit ID
 
 
         //Here we add the Credit to the chosen Program into the database
@@ -172,7 +172,7 @@ public class User {
 
         //Start by asking for the movie title
         System.out.println("Indtast navnet på din film ");
-        String title = p_title //This should be a textfield on the GUI
+        String title = p_title; //This should be a textfield on the GUI
 
         //Ask for the release date
         System.out.println("Indtast navnet på din udgivelsesdato på din film ");

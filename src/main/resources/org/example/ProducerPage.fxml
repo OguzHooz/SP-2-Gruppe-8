@@ -13,14 +13,14 @@
             <Button layoutX="441.0" layoutY="13.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Send to verification" />
          <TextField fx:id="programTitleTextField" layoutX="288.0" layoutY="175.0" prefHeight="25.0" prefWidth="100.0" />
          <TextField fx:id="udgivelsesDatoTextField" layoutX="399.0" layoutY="175.0" prefHeight="25.0" prefWidth="84.0" />
-         <Button fx:id="createProgramButton" layoutX="486.0" layoutY="175.0" mnemonicParsing="false" text="Create Program" />
+         <Button fx:id="createProgramButton" layoutX="486.0" layoutY="175.0" mnemonicParsing="false" onAction="#createProgramGUI" text="Create Program" />
          <Label layoutX="286.0" layoutY="158.0" text="Programtitle:" />
          <Label layoutX="399.0" layoutY="158.0" text="Udgivelsesdato:" />
          <TextField fx:id="programIDTextField" layoutX="285.0" layoutY="291.0" prefHeight="25.0" prefWidth="69.0" />
          <TextField fx:id="creditIdTextfield" layoutX="394.0" layoutY="291.0" prefHeight="25.0" prefWidth="69.0" />
          <Label layoutX="288.0" layoutY="274.0" text="Program ID:" />
          <Label layoutX="394.0" layoutY="274.0" text="Credit ID:" />
-         <Button fx:id="addCreditButton" layoutX="486.0" layoutY="291.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Add Credit " />
+         <Button fx:id="addCreditButton" layoutX="486.0" layoutY="291.0" mnemonicParsing="false" onAction="#addCreditToProgramGUI" prefHeight="25.0" prefWidth="100.0" text="Add Credit " />
          <Label layoutX="288.0" layoutY="105.0" text="Tilføj Program">
             <font>
                <Font size="18.0" />
