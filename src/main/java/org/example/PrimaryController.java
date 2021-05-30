@@ -64,6 +64,8 @@ public class PrimaryController {
     @FXML
     private TextArea listOfProgramsTextArea;
 
+    @FXML
+    private ListView<String> programListView;
 
     @FXML
     private Button deleteProgramButton;
@@ -101,13 +103,17 @@ public class PrimaryController {
     Statement statement = null;
 
     public void showProgramList (ActionEvent e) throws IOException{
+        System1 system1 = new System1();
         User user = new User();
+        system1.loadProgramsFromDatabase(); //This method creates objects retrieved from the database
+        system1.loadPersonFromDatabase();
+        system1.loadCreditsFromDatabase();
+        system1.insertProgramTitle();
 
-        String a = "Hey";
-        String b = "Yo";
 
-        Object objects =System1.tableViewArray.stream().toArray();
-        listOfProgramsTextArea.setText(objects.toString());
+        String listOfPrograms[] = user.arrayListToArray(System1.tableViewArray);
+
+        programListView.getItems().addAll(listOfPrograms);
 
 
 

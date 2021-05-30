@@ -1,6 +1,7 @@
 package org.example;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -24,6 +25,7 @@ public class User {
     }
 
 
+
     public User() {
 
         userid = 0;
@@ -35,6 +37,15 @@ public class User {
 
 
     static Connection connection = null;
+
+    public String[] arrayListToArray (ArrayList<String> arr) {
+        String str[] = new String[arr.size()];
+
+        for (int i = 0; i < arr.size(); i++){
+            str[i] = arr.get(i);
+        }
+        return str;
+    }
 
     public void createCredit(int input_personID, String input_role) {
         //Connect to database
